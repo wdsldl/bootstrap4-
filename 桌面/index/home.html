@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+</head>
+<script>
+    $(document).ready(function(){
+
+        $("#modalDialog").draggable();//为模态对话框添加拖拽
+        $("#myModal").css("overflow", "hidden");//禁止模态对话框的半透明背景滚动
+
+    });
+    var co=0;
+    $(document).ready(function () {
+        $('#myModal').draggable();
+        $(".headface").mouseenter(function () {
+            var a=$("#header").outerHeight();
+            if(co==0) {
+                tigger = setTimeout(function () {
+                    var x = $("#img").offset();
+                    var y = $(document).width();
+                    var z = parseFloat(y) - (parseFloat(x.left) + 70 / 2);
+                    var b=$("#mess").width();
+                    b=b/2;
+                    $("#img").animate({
+                        marginTop: "10px",
+                        width: "70px",
+                        height: "70px",
+                        borderTopRightRadius:40,
+                        borderTopLeftRadius:40,
+                        borderBottomLeftRadius:40,
+                        borderBottomRightRadius:40,
+                    });
+                    /*$("#naver").animate({
+                        marginTop:a
+                    });*/
+                    $("#img").css("z-index", "3");
+                    z = parseInt(z - b).toString() + "px";
+                    $("#mess").css("top",a);
+                    $("#mess").css("right", z);
+
+                    $("#mess").fadeIn(500);
+                    co = 1;
+                }, 200);
+            }
+        });
+        $(".headface").mouseleave (function() {
+            clearTimeout(tigger);
+        });
+    });
+    $(document).ready(function () {
+        $(".headface").mouseleave(function () {
+            var a=30+25/2;
+            $("#img").stop();
+            $("#mess").stop();
+            $("#naver").stop();
+            /*$("#img").css("top","");
+            $("#img").css("position","");*/
+            $("#img").animate({marginTop:"0",width:"45px",height:"45px"});
+            /*$("#naver").animate({marginTop:0});*/
+            $("#mess").fadeOut(500);
+            co=0;
+
+        })
+    });
+    $(document).ready(function () {
+      var a=$(".my-pills").outerWidth();
+      $(".nav-link.navit").css("width",a);
+    });
+</script>
+<body>
+<nav class="navbar navbar-expand-sm  bg-light navbar-light" id="header">
+    <a class="navbar-brand" href="#" style="font-size: xx-large">今日小站</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto" style="text-align: center">
+            <li class="nav-item" style="margin-right: 40px">
+                <iframe src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3" height="28" scrolling="no" style="border: none;margin-top: 8px"></iframe>
+            </li>
+            <li class="nav-item">
+                <div style="margin-right: 20px" class="headface">
+                    <a><img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class=" rounded-circle" style="width:45px;" id="img"></a>
+                    <div id="mess" class="col-3 border">
+                        <div style="margin-bottom: 30px">
+                            <div style="text-align: center;margin-bottom: 40px;margin-top: 18px">
+                                <span style="font-size: 20px"><strong>鸡你太美<b style="width: 5px;display: inline-block;font-family:KaiTi"></b><i class="icon5"></i></strong></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-1 offset-1">
+                                    <span class="glyphicon glyphicon-comment" style="color: #007bff;margin-top: 5px"></span>
+                                </div>
+                                <p class="col-9" style="font-size: 15px;opacity: 0.7">这个人很懒,什么都没留下...</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row border-top" style="padding-top: 20px">
+                                <a class="xx col-5 offset-1" href="#"><span class="glyphicon glyphicon-home"></span><b style="width: 5px; display: inline-block"></b><span>个人中心</span></a>
+                                <a class="xx col-5"><span class="glyphicon glyphicon-list-alt"></span><b style="width: 5px; display: inline-block"></b><span>我的信息</span></a>
+                            </div>
+                            <div class="row" style="margin-top: 5px;">
+                                <a class="xx col-5 offset-1"><span class="glyphicon glyphicon-time"></span><b style="width: 5px; display: inline-block"></b><span >历史观看</span></a>
+                                <a class="xx col-5"><span class="glyphicon glyphicon-pencil"></span><b style="width: 5px; display: inline-block"></b><span>我的评论</span></a>
+                            </div>
+                            <div class="row" style="margin-top: 5px;margin-bottom: 20px">
+                                <a class="xx col-5 offset-1"><span class="glyphicon glyphicon-star"></span><b style="width: 5px; display: inline-block"></b><span >我的收藏</span></a>
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: rgba(212,212,212,0.77);height: 40px;padding-top: 10px">
+                            <a style="font-size: small;" class="offset-9"><span>退出登录</span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item" style="display: none">
+                <a href="#"><img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class=" rounded-circle" style="width:45px;display: inline"></a>
+                <a class="nav-link" style="display: inline;" href="#">lzf</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">注册</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">关于本站</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid col-8" id="bigbox">
+    <div class="row">
+        <ul class="nav flex-column  nav-pills nav-justified col-2 my-pills">
+            <li class="nav-item "id="navit0">
+                <a class="nav-link active navit" href="#" id="navli0"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;我的信息</a>
+            </li>
+            <li class="nav-item" id="navit1">
+                <a class="nav-link navit" href="#" id="navli1"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;&nbsp;历史观看</a>
+            </li>
+            <li class="nav-item" id="navit2">
+                <a class="nav-link navit" href="#" id="navli2"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;我的评论</a>
+            </li>
+            <li class="nav-item" id="navit3">
+                <a class="nav-link navit" href="#" id="navli3"><span class="glyphicon glyphicon-star"></span>&nbsp;&nbsp;&nbsp;我的收藏</a>
+            </li>
+            <li class="nav-item" id="navit4">
+                <a class="nav-link navit" href="#" id="navli4"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;我的头像</a>
+            </li>
+            <li class="nav-item" id="navit5">
+                <a class="nav-link navit" href="#" id="navli5"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;&nbsp;账号安全</a>
+            </li>
+        </ul>
+        <div class="col-10 container-fluid " id="rightside">
+            <div class="text-center righthead">
+                <h3 style="color: #007bff">我的信息</h3>
+            </div>
+        </div>
+    </div>
+    </nav>
+</div>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    打开模态框
+</button>
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog" id="modalDialog" role="document">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header" id="login1">
+                <span class="modal-title" ><strong style="color: #222222">登录</strong></span>
+                <button type="button" class="close" data-dismiss="modal" style="font-size: 20px">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+               <form class=" form-horizontal" style="margin:6% 0 5% 0">
+                   <div style="text-align: center">
+                   <div class="form-group">
+                   <input type="email" placeholder="请输入邮箱" class="in1 form-control" id="email1">
+                   </div>
+                   <div class="form-group">
+                   <input type="password" placeholder="请输入密码" class="in1 form-control">
+                   </div>
+                   </div>
+                   <div class="form-check-label" style="margin-left: 29%">
+                       <input type="checkbox" class="form-check-input"><span style="color: rgba(91,91,91,0.82);font-size: 14px">记住密码</span>
+                       <a style="margin-left: 25%;color: rgba(91,91,91,0.82);font-size: 14px" href="#"><span>忘记密码?</span></a>
+                   </div>
+               </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <a href="#" style="text-decoration-color: #6c757d;margin-right: 3%"><span style="font-size: 13px;color: rgba(91,91,91,0.82);">还没有账号?</span></a>
+                <button type="button" class="btn btn-primary" style="letter-spacing: 2px">登录</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

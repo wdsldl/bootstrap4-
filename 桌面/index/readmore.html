@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="readmo.css">
+    <link rel="stylesheet" href="nav.css">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script>
+        var co=0;
+        $(document).ready(function () {
+            $(".headface").mouseenter(function () {
+                var a=$("#header").outerHeight();
+                if(co==0) {
+                    tigger = setTimeout(function () {
+                        var x = $("#img").offset();
+                        var y = $(document).width();
+                        var z = parseFloat(y) - (parseFloat(x.left) + 70 / 2);
+                        var b=$("#mess").width();
+                        b=b/2;
+                        $("#img").animate({
+                            marginTop: "10px",
+                            width: "70px",
+                            height: "70px",
+                            borderTopRightRadius:40,
+                            borderTopLeftRadius:40,
+                            borderBottomLeftRadius:40,
+                            borderBottomRightRadius:40,
+                        });
+                        /*$("#naver").animate({
+                            marginTop:a
+                        });*/
+                        $("#img").css("z-index", "3");
+                        z = parseInt(z - b).toString() + "px";
+                        $("#mess").css("top",a);
+                        $("#mess").css("right", z);
+
+                        $("#mess").fadeIn(500);
+                        co = 1;
+                    }, 200);
+                }
+            });
+            $(".headface").mouseleave (function() {
+                clearTimeout(tigger);
+            });
+        });
+        $(document).ready(function () {
+            $(".headface").mouseleave(function () {
+                var a=30+25/2;
+                $("#img").stop();
+                $("#mess").stop();
+                $("#naver").stop();
+                /*$("#img").css("top","");
+                $("#img").css("position","");*/
+                $("#img").animate({marginTop:"0",width:"45px",height:"45px"});
+                /*$("#naver").animate({marginTop:0});*/
+                $("#mess").fadeOut(500);
+                co=0;
+
+            })
+        });
+        $(document).ready(function () {
+            if ($(document).scrollTop() == 0) {
+                $("#gotop").css("display", "none");
+                $("#shoucang").css("border-top-color", "");
+                $("#shoucang").css("border-radius","3px");
+                var a=$("#header").outerHeight();
+                a=a+10;
+                $("#btnping").css("top",a);
+            }
+            $(document).scroll(function () {
+                if ($(document).scrollTop() == 0) {
+                    $("#gotop").css("display", "none");
+                    $("#shoucang").css("border-top-color","");
+                    $("#shoucang").css("border-radius","3px")
+                } else {
+                    $("#gotop").css("display", "");
+                    $("#shoucang").css("border-top-color"," #528aeb");
+                }
+            })
+        })
+        $(document).scroll(function () {
+            if($(document).scrollTop()>=$("#header").outerHeight()){
+                $("#btnping").css("top",10);
+            };
+            if($(document).scrollTop()<=$("#header").outerHeight()){
+                var a=$("#header").outerHeight()-$(document).scrollTop();
+                a=a+10;
+                $("#btnping").css("top",a);
+            }
+        });
+    </script>
+</head>
+<body data-spy="scroll" data-target=".btnping" data-offset="50">
+<nav class="navbar navbar-expand-sm  bg-light navbar-light" id="header">
+    <a class="navbar-brand" href="#">今日小站</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="margin-right: 40px">
+                <iframe src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3" height="28" scrolling="no" style="border: none;margin-top: 8px"></iframe>
+            </li>
+            <li class="nav-item" style="display: none">
+                <div style="margin-right: 20px" class="headface">
+                    <a><img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class=" rounded-circle" style="width:45px;" id="img"></a>
+                    <div id="mess" class="col-3 border">
+                        <div style="margin-bottom: 30px">
+                            <div style="text-align: center;margin-bottom: 40px;margin-top: 18px">
+                                <span style="font-size: 20px"><strong>鸡你太美<b style="width: 5px;display: inline-block;font-family:KaiTi"></b><i class="icon5"></i></strong></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-1 offset-1">
+                                    <span class="glyphicon glyphicon-comment" style="color: #007bff;margin-top: 5px"></span>
+                                </div>
+                                <p class="col-9" style="font-size: 15px;opacity: 0.7">这个人很懒,什么都没留下...</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row border-top" style="padding-top: 20px">
+                                <a class="xx col-5 offset-1" href="#"><span class="glyphicon glyphicon-home"></span><b style="width: 5px; display: inline-block"></b><span>个人中心</span></a>
+                                <a class="xx col-5"><span class="glyphicon glyphicon-list-alt"></span><b style="width: 5px; display: inline-block"></b><span>我的信息</span></a>
+                            </div>
+                            <div class="row" style="margin-top: 5px;margin-bottom: 20px">
+                                <a class="xx col-5 offset-1"><span class="glyphicon glyphicon-time"></span><b style="width: 5px; display: inline-block"></b><span >历史观看</span></a>
+                                <a class="xx col-5"><span class="glyphicon glyphicon-pencil"></span><b style="width: 5px; display: inline-block"></b><span>我的评论</span></a>
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: rgba(212,212,212,0.77);height: 40px;padding-top: 10px">
+                            <a style="font-size: small;" class="offset-9"><span>退出登录</span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">登录</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">注册</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">关于本站</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<a type="button" class="btn btn-default btn-md btnping" id="btnping" href="#pinglunqu">
+    <span class="glyphicon glyphicon-edit">
+    </span>
+    <span>
+        评论区
+    </span>
+</a>
+<div id="page" class="container">
+    <div class="row">
+    <section class="col-md-10 offset-md-1" id="section1">
+        <header class="major">
+            <h2 id="title"></h2>
+        </header>
+        <p id="content"></p>
+    </section>
+    </div>
+</div>
+<div class="btn-group-vertical" id="bntgroup">
+        <a type="button" class="btn btn-primary"id="gotop" href="#"><span class="glyphicon glyphicon-chevron-up" style="color: white"></span></a>
+        <a type="button" class="btn btn-primary"id="shoucang" href="#"><span class="glyphicon glyphicon-star-empty" style="color: white"></span></a>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container" id="pinglunqu">
+    <div class="row">
+    <div class="mt-3 col-9 offset-1">
+    <div class="media border p-3 media1" style="height: 150px">
+        <img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class="mr-3 rounded-circle align-self-center" style="width:45px;">
+        <div class="media-body row align-self-center" style="margin-left: 10px">
+            <div class="col-8">
+                <form >
+                    <textarea type="text" id="textarea1" placeholder="输入发表评论的内容,请文明用语"></textarea>
+                </form>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" style="width: 100%;height: 70px;padding:2px;letter-spacing:2px;">发表评论</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+</div>
+<div class="container" style="margin-bottom: 50px">
+    <div class="row">
+        <div class="mt-3 col-9 offset-1">
+            <div class="media p-3 media2">
+                <img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class="mr-3 rounded-circle align-self-start" style="width:45px;">
+                <div class="media-body row " style="margin-left: 10px">
+                    <div class="col-8">
+                        <p style="color: #494949;font-size: small">用户名</p>
+                        <p>我写的评论222222222222222222</p>
+                        <div style="margin-top:-2%">
+                        <span class="xiaozi">时间</span>
+                        <span class="offset-1 xiaozi">时间</span>
+                        <button class="offset-3 btn btn-default xiaozi"><span class="glyphicon glyphicon-thumbs-up"></span><span>&nbsp0</span></button>
+                            <button class=" btn btn-default xiaozi"><span class="glyphicon glyphicon-thumbs-down"></span><span>&nbsp0</span></button>
+                            <button class=" btn btn-default offset-1 xiaozi"><span>回复</span></button>
+                        </div>
+                        <div class="media p-3 row">
+                            <img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class="mr-3 rounded-circle align-self-start" style="width:30px;">
+                            <div class="media-body row " style="margin-left: 10px">
+                                <div class="col-12">
+                                    <p style="color: #494949;font-size: small">用户名</p>
+                                    <p>我写的评论222222222222222222</p>
+                                    <div style="margin-top:-2%">
+                                        <span class="xiaozi">时间</span>
+                                        <button class="offset-2 btn btn-default xiaozi"><span class="glyphicon glyphicon-thumbs-up"></span><span>&nbsp0</span></button>
+                                        <button class=" btn btn-default xiaozi"><span class="glyphicon glyphicon-thumbs-down"></span><span>&nbsp0</span></button>
+                                        <button class=" btn btn-default offset-1 xiaozi"><span>回复</span></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media p-3 row">
+                            <img src="https://static.runoob.com/images/mobile-icon.png" alt="John Doe" class="mr-3 rounded-circle align-self-start" style="width:30px;">
+                            <div class="media-body row " style="margin-left: 10px">
+                                <div class="col-12">
+                                    <p style="color: #494949;font-size: small">用户名</p>
+                                    <p>我写的评论222222222222222222</p>
+                                    <div style="margin-top:-2%">
+                                        <span class="xiaozi">时间</span>
+                                        <button class="offset-2 btn btn-default xiaozi"><span class="glyphicon glyphicon-thumbs-up"></span><span>&nbsp0</span></button>
+                                        <button class=" btn btn-default xiaozi"><span class="glyphicon glyphicon-thumbs-down"></span><span>&nbsp0</span></button>
+                                        <button class=" btn btn-default offset-1 xiaozi"><span>回复</span></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

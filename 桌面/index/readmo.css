@@ -1,0 +1,48 @@
+#section1{
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 2px solid #909090;
+    min-height: 200px;
+}
+
+#gotop{
+    /*display: none;*/
+}
+#shoucang{
+    /*border-top-color: #909090;*/
+    border-top-color: #528aeb;
+}
+#bntgroup{
+    position: fixed;
+    top:75%;
+    right: 2%;
+}
+
+.btn.btn-default.btn-md.btnping{
+    left: 2%;
+    position: fixed;
+    font-size: large;
+    color: #528aeb;
+}
+#textarea1{
+    padding:3px;
+    font-size:small;
+    height:70px;
+    width: 100%;
+    resize: none;
+    border: 1px solid #528aeb;
+    border-radius: 3px;
+}
+.media.p-3.media1{
+    border-right: none !important;
+    border-left: none !important;
+}
+.media.p-3.media2{
+
+    border-bottom: 1px solid rgb(222, 226, 230) ;
+}
+
+.xiaozi{
+    font-size: small;
+    color: #747474;
+}

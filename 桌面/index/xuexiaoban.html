@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="live2d-xuexiaoban-master/live2d/css/live2d.css" />
+<script src="jquery-3.4.1.min.js"></script>
+<body>
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="560" height="500" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+<script type="javascript">
+    var message_Path = '/live2d/';
+    var home_Path = 'https://haremu.com/';
+</script>
+<script type="text/javascript" src="live2d-xuexiaoban-master/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="live2d-xuexiaoban-master/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d-xuexiaoban-master/live2d/model/xiaoban/model.json");
+</script>
+</body>
+</html>
